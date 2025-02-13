@@ -969,6 +969,8 @@ int32_t lis2hh12_xl_self_test_set(const stmdev_ctx_t *ctx,
 int32_t lis2hh12_xl_self_test_get(const stmdev_ctx_t *ctx,
                                   lis2hh12_xl_st_t *val);
 
+void lis2hh12_from_raw_to_mg(lis2hh12_xl_fs_t sense, int16_t *raw_data, float *mg_data);
+
 /**
   *@}
   *

@@ -99,6 +99,15 @@ int32_t __weak lis2hh12_write_reg(const stmdev_ctx_t *ctx, uint8_t reg,
   *
   */
 
+void lis2hh12_from_raw_to_mg(lis2hh12_xl_fs_t sense, int16_t *raw_data, float *mg_data)
+{
+	int i;
+	float sense_offset[] = {0.061, 0.488, 0.122, 0.244}; //2G,16G,4G,8G
+
+	for(i = 0; i <= 2; i++)
+		mg_data[i] = ((float_t)raw_data[i] * sense_offset[sense]);
+}
+
 float_t lis2hh12_from_fs2g_to_mg(int16_t lsb)
 {
   return ((float_t)lsb * 0.061f);
